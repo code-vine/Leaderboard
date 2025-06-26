@@ -27,7 +27,7 @@ A full-stack ASP.NET Core application that displays and manages a dynamic top-sc
 git clone https://github.com/your-username/secure-leaderboard-api.git
 cd secure-leaderboard-api
 
-2. Configure AppSettings
+### 2. Configure AppSettings
 
 Update appsettings.json with your custom secrets:
 "Jwt": {
@@ -42,11 +42,11 @@ Update appsettings.json with your custom secrets:
 
 🔑 Use a secure, random key in production.
 
-3. Run Migrations
+### 3. Run Migrations
 
 dotnet ef database update
 
-4. Launch the App
+### 4. Launch the App
 
 dotnet run
 
