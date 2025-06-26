@@ -1,37 +1,38 @@
-﻿# 🎮 Secure Leaderboard API
+# 🎮 Secure Leaderboard API
 
-A full-stack ASP.NET Core application that displays and manages a dynamic top-score leaderboard with secure token-based submission. Built with MVC architecture, Identity integration, and role-restricted endpoints.
+A full-stack.NET Core designed to display and manage a dynamic top-score leaderboard with secure token-based submission, featuring MVC, Identity integration, and role-restricted endpoints.
 
 ## ✨ Features
 
-- 🏆 View top 10 leaderboard entries
-- 🔐 Admin-only score submission via JWT-protected API
+- 🏆 Display the top 10 leaderboard entries
+- 🔐 Admin-exclusive score submission through a JWT-protected API
 - 🧾 Custom `/token` endpoint for issuing secure access tokens
-- 🛡️ Role-based authorization and `client_id` claim validation
-- 💾 SQL Server-backed data storage with Entity Framework Core
-- 🧪 Postman/test-ready API design
+- 🛡️ Role-based authorization with `client_id` claim validation- 💾 Data storage backed by SQL Server and Entity Framework Core
+- 🧪 Test-ready API design compatible with Postman
 
-## 🧰 Tech Stack
+ 🧰 Tech Stack
 
-- ASP.NET Core MVC
-- Entity Framework Core + Identity
+- ASP Core MVC
+- Entity Core with Identity
 - JWT Authentication
-- SQL Server / SQLite (configurable)
-- Bootstrap for UI styling
+ SQL Server SQLite (urable)
+- Bootstrap for user interface styling
 
 ## 🚀 Getting Started
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/secure-leaderboard-api.git
-cd secure-leaderboard-api
+git clone https://.com/your-username/secure-leaderboard-api.git
+cd secure-leader-api
+```
 
 ### 2. Configure AppSettings
 
-Update appsettings.json with your custom secrets:
+Update the `settings.json` file with your custom secrets:
+```json
 "Jwt": {
-  "Issuer": "LeaderboardAPI",
+  "Issuer "API",
   "Audience": "LeaderboardClient",
   "Key": "super-secret-key-12345"
 },
@@ -39,34 +40,38 @@ Update appsettings.json with your custom secrets:
   "ClientId": "my-trusted-client",
   "ClientSecret": "supa-secret-67890"
 }
+```
 
-🔑 Use a secure, random key in production.
+🔑 Ensure to use a secure, random key in production environments.
 
-### 3. Run Migrations
+### 3. Migrations
 
+ the following command to apply database migrations:
+```bash
 dotnet ef database update
+```
 
-### 4. Launch the App
+### 4. Launch the Application
 
-dotnet run
+Run the application using:
+```bash
+dot run```
 
-Submit scores via POST /api/LeaderboardApi/submit with a valid token.
+Submit via a POST request to `/api/LeaderboardApi/submit` using a valid token### 🔐 Token Generation
 
-🔐 Token Generation
-Use POST /api/token/generate:
-
-{
-  "clientId": "my-trusted-client",
-  "clientSecret": "supa-secret-67890"
+Generate a token by sending a POST request to `/api/tokenenerate` with the following:
+```json
+clientId": "my-trusted-client",
+ "clientSecret": "supa-67890"
 }
+```
 
-Then send the returned JWT in the Authorization header:
+Include the returned JWT in Authorization header for subsequent requests:
+```
 Authorization: Bearer <your-token>
+```
 
-📦 Deployment
-
-Supports deployment to Azure App Service or Docker. 
-Update connection strings and JWT values as needed for production environments.
+📦 Deployment: Update connection and JWT values as required for production environments.
 
 
 🙌 Author
