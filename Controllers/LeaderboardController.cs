@@ -21,11 +21,6 @@ namespace Leaderboard.Controllers
         [HttpPost("submit")]
         public async Task<IActionResult> SubmitScore([FromBody] LeaderboardEntry entry)
         {
-
-            foreach (var claim in User.Claims)
-            {
-                Console.WriteLine($"{claim.Type}: {claim.Value}");
-            }
             if (entry == null || string.IsNullOrEmpty(entry.Username) || entry.Score < 0)
             {
                 return BadRequest("Invalid leaderboard entry.");
@@ -35,8 +30,21 @@ namespace Leaderboard.Controllers
             return Ok("Score submitted successfully.");
         }
 
-        [HttpGet("ping")]
-        public IActionResult Ping() => Ok("pong");
+        [HttpGet("scores")]
+        public IActionResult GetTopScores()
+        {
+            var topScores = _context.LeaderboardEntries
+                .OrderByDescending(e => e.Score)
+                .ThenByDescending(e => e.DateAchieved)
+                .Take(10)
+                .ToList();
+
+            if (topScores.Count == 0)
+            {
+                return NotFound("No scores found.");
+            }
+            return Ok(topScores);
+        }
 
     }
 }
